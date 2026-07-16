@@ -1,5 +1,5 @@
 import json
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -31,6 +31,34 @@ def get_ligne(ligne_id):
     if ligne is None:
         return jsonify({"erreur": "Ligne non trouvee"}), 404
     return jsonify(ligne)
+
+@app.route("/arrets")
+def get_arrets():
+    tous = set()
+    for l in lignes:
+        tous.update(l["listeArrets"])
+    return jsonify(list(tous))
+
+
+@app.route("/stats")
+def get_stats():
+    total_arrets = sum(l["arrets"] for l in lignes)
+    ligne_max = max(lignes, key=lambda l: l["arrets"])
+    return jsonify({
+        "nombre_lignes": len(lignes),
+        "total_arrets": total_arrets,
+        "ligne_plus_longue": ligne_max["numero"]
+    })
+
+
+@app.route("/lignes/recherche")
+def recherche_lignes():
+    q = request.args.get("q", "")
+    resultats = [
+        l for l in lignes
+        if q.lower() in l["depart"].lower() or q.lower() in l["arrivee"].lower()
+    ]
+    return jsonify(resultats)
 
 
 if __name__ == "__main__":
