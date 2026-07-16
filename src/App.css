@@ -20,3 +20,80 @@
     padding: 12px;
   }
 }
+@media (max-width: 600px) {
+.contenu {
+padding: 12px;
+}
+.ligne-bus {
+padding: 10px 12px;
+}
+.ligne-numero {
+width: 40px;
+height: 40px;
+font-size: 1rem;
+margin-right: 12px;
+}
+}
+
+/* Exercice 3 : Compteur de recherches */
+.compteur-recherches {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+
+/* Exercice 2 : Message aucun résultat */
+.aucun-resultat {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+.aucun-resultat p {
+  margin: 8px 0;
+}
+
+.aucun-resultat p:first-child {
+  font-size: 1.2rem;
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.suggestion {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+/* Responsive déjà existant */
+@media (max-width: 600px) {
+  .contenu {
+    padding: 12px;
+  }
+  .ligne-bus {
+    padding: 10px 12px;
+  }
+  .ligne-numero {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    margin-right: 12px;
+  }
+  
+  /* Exercice 1 responsive */
+  .btn-effacer {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+  
+  /* Exercice 3 responsive */
+  .compteur-recherches {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+}
